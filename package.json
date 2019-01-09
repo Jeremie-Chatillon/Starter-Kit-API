@@ -7,8 +7,9 @@
 	"scripts": {
 		"start": "node ./src/server.js",
 		"dev": "nodemon ./src/server.js --watch src",
-		"test": "NODE_ENV=test mocha --recursive test/graphql/services --exit",
-		"test-jest": "NODE_ENV=test jest --detectOpenHandles --runInBand"
+		"test": "cross-env NODE_ENV=test mocha --recursive test/graphql/services --exit",
+		"test-jest": "cross-env NODE_ENV=test jest --detectOpenHandles --runInBand",
+		"start-prod": "cross-env NODE_ENV=production node ./src/server.js"
 	},
 	"dependencies": {
 		"apollo-server-express": "^2.2.5",
@@ -33,6 +34,7 @@
 		"chai": "^4.2.0",
 		"chai-as-promised": "^7.1.1",
 		"chai-http": "^4.2.0",
+		"cross-env": "^5.2.0",
 		"dirty-chai": "^2.0.1",
 		"eslint": "^5.9.0",
 		"eslint-config-airbnb-base": "^13.1.0",
