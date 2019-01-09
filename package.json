@@ -9,7 +9,11 @@
 		"dev": "nodemon ./src/server.js --watch src",
 		"test": "cross-env NODE_ENV=test mocha --recursive test/graphql/services --exit",
 		"test-jest": "cross-env NODE_ENV=test jest --detectOpenHandles --runInBand",
-		"start-prod": "cross-env NODE_ENV=production node ./src/server.js"
+    "start-prod": "cross-env NODE_ENV=production node ./src/server.js",
+    "populatedb-dev": "cross-env cross-env NODE_ENV=development mocha ./test/populateDatabase.js",
+    "populatedb-test": "cross-env NODE_ENV=test mocha ./test/populateDatabase.js",
+    "populatedb-prod": "cross-env NODE_ENV=production mocha ./test/populateDatabase.js"
+    
 	},
 	"dependencies": {
 		"apollo-server-express": "^2.2.5",
