@@ -13,6 +13,9 @@ type Mutation {
 	# Met à jour l'utilisateur correspondant à l'id reçu dans l'objet 'user' avec les informations également contenues dans l'objet 'user'.
 	updateUser(user: UserInputUpdate!): User
 
+  # Crée un nouvel utilisateur
+	newUser(user: NewUserInputUpdate!): User
+
 	# Supprime le compte de l'utilisateur correspondant à 'userId'.
 	deleteUser(userId: ID!): User
 }
@@ -35,4 +38,12 @@ input UserInputUpdate {
 	id: ID!
 	firstname: String!
 	lastname: String!
+}
+
+input NewUserInputUpdate{
+  firstname: String!
+	lastname: String!
+  pseudo: String!
+  email: String!
+  password: String! 
 }

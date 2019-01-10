@@ -32,6 +32,11 @@ async function isEmailAvailable(emailUser) {
   return existingPerson === null;
 }
 
+async function isPseudoAvailable(pseudoUser) {
+  const existingPerson = await UsersModel.findOne({ pseudo: pseudoUser });
+  return existingPerson === null;
+}
+
 function checkIfPasswordIsValid(password) {
   if (password.length < 6) {
     throw new Error('New password must be at least 6 characters long.');
@@ -49,12 +54,13 @@ function checkIfPasswordIsValid(password) {
   return true;
 }
 
-async function addUser({ firstname, lastname, email, password }) {
-  if (await isEmailAvailable(email) && checkIfPasswordIsValid(password)) {
+async function newUser({ firstname, lastname, email, pseudo, password }) {
+  if (await isEmailAvailable(email) && checkIfPasswordIsValid(password)  && isPseudoAvailable(password)) {
     const userToAdd = {
       firstname,
       lastname,
       email,
+      pseudo,
       password: await bcrypt.hash(password, 10)
     };
 

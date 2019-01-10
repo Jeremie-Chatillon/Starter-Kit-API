@@ -73,6 +73,44 @@ describe('Testing graphql resquest user', () => {
       });
     });
 
+    describe('Testing graphql resquest user', () => {
+      describe('MUTATION tokens', () => {
+    
+        // ----------------------relog(token: String!)-------------------------------------- //
+        describe('-relog(token: String!)', () => {
+          beforeEach(async() => {
+            await clearAndPopulateDB();
+          });
+    
+          const { mutation } = {
+            mutation: `mutation ($email: String!, $password: String!){
+                          login(email: $email, password: $password){
+                            token
+                          }
+                        }`
+          };
+
+          const { mutation2 } = {
+            mutation: `mutation($tokenInput:String!){
+              relog(token: $tokenInput){
+                token
+              }
+            }`
+          };
+    
+          let  tmpToken;
+          it('should return the token because login succeed', async(done) => {
+            const variables = { token:tmpToken };
+            const result = await graphql(schema, mutation2, null, {}, variables);
+            const { token } = result.data.login;
+            
+            expect(tmpToken).not.toBeNull();
+            done();
+          });
+    
+          
+        });
+
     // ----------------------signUpAsUser(newUser: UserInputAdd!)-------------------------------------- //
     describe('Testing signUpAsUser(newUser: UserInputAdd!)', () => {
       beforeEach(async() => {

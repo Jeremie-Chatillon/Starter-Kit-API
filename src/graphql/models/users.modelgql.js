@@ -17,6 +17,10 @@ const userSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.String,
       required: true
     },
+    pseudo:{
+      type: mongoose.Schema.Types.String,
+      required: true
+    },
     email: {
       type: mongoose.Schema.Types.String,
       required: true,
@@ -26,7 +30,7 @@ const userSchema = new mongoose.Schema(
     password: {
       type: mongoose.Schema.Types.String,
       required: true
-    }
+    },
   }, options
 );
 

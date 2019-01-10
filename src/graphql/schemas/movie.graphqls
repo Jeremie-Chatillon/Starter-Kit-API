@@ -1,0 +1,15 @@
+type Query {
+	# Retourne tous les posts de l'utilisateur correspondant à l'id 'userId'
+	getMovies(): [Movie!]!
+  getMovies(page: PageInput!): [Movie!]!
+}
+
+type Movie{
+  title: !String
+  
+}
+
+
+input PageInput{
+  page: Int!
+}
