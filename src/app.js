@@ -13,10 +13,27 @@ mongoose.connect(config.db, { useNewUrlParser: true })
 
 const app = express();
 
+/*
+Au cas ou il y a une HeaderFault
+const corsOptions = {
+  origin(origin, callback) {
+    callback(null, true);
+  },
+  credentials: true
+};
+app.use(cors(corsOptions));
+var allowCrossDomain = function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+}
+app.use(allowCrossDomain);
+*/
 // Active CORS pour le client
 app.use(cors());
 
-const getToken = async(req) => {
+const getToken = async (req) => {
   const token = req.headers['x-token'];
 
   if (token) {

@@ -8,6 +8,14 @@ async function login(email, password) {
   return createConnectionToken(user.id, user.email);
 }
 
+
+function relog(token) {
+
+  return  jwt.verify(token, config.jwtSecret);
+}
+
+
+
 async function signUpAsUser(newUser) {
   // le check de la disponibilité de l'email et de la force du mdp sont fait dans addUser()
   const user = await usersServices.addUser(newUser);
@@ -22,5 +30,6 @@ function createConnectionToken(id, email) {
 
 module.exports = {
   login,
-  signUpAsUser
+  signUpAsUser,
+  relog
 };
