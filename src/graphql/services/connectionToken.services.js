@@ -31,5 +31,5 @@ function createConnectionToken(id, email) {
 module.exports = {
   login,
   signUpAsUser,
-  relog
+  relog,
 };
