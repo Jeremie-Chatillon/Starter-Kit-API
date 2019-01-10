@@ -2,16 +2,12 @@ type Mutation {
     # Permet à un utilisateur inscrit de se connecter à son compte.
     login(email: String!, password: String!): Token!
 
-    relog(token: TokenInput!): Token!
+    relog(token: String!): Token!
 
     # Permet à un nouvel utilisateur de s'inscrire et se créer un compte.
     signUp(newUser: UserInputAdd!): Token!
 }
 
 type Token {
-    token: String!
-}
-
-input TokenInput {
     token: String!
 }

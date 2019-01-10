@@ -9,9 +9,9 @@ async function login(email, password) {
 }
 
 
-function relog(token) {
-
-  return  jwt.verify(token, config.jwtSecret);
+async function relog(token) {
+  await jwt.verify(token, config.jwtSecret);
+  return token;
 }
 
 
